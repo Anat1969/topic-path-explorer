@@ -26,6 +26,7 @@ const TopicPage = () => {
     if (sessionId === "a" && topicId === "2") return lesson2Steps;
     if (sessionId === "a" && topicId === "3") return lesson3Steps;
     if (sessionId === "b" && topicId === "1") return lesson4Steps;
+    if (sessionId === "b" && topicId === "2") return lesson5Steps;
     return null;
   };
   const currentLessonSteps = getLessonSteps();
