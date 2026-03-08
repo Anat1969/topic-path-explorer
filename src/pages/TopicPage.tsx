@@ -7,6 +7,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, ArrowLeft, Construction, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useCallback, useEffect } from "react";
 import type { LessonStep } from "@/data/lessonData";
+import { StudentSubmissions } from "@/components/StudentSubmissions";
+import { useAuth } from "@/contexts/AuthContext";
 
 const TopicPage = () => {
   const { sessionId, topicId } = useParams();
