@@ -10,6 +10,8 @@ export interface Session {
   letter: string;
   title: string;
   subtitle: string;
+  explanationTitle: string;
+  explanationPoints: string[];
   topics: Topic[];
 }
 
@@ -19,6 +21,13 @@ export const sessions: Session[] = [
     letter: "א'",
     title: "AI ככלי (עוזר)",
     subtitle: "שימוש ב-AI ככלי עזר ליצירה ופיתוח",
+    explanationTitle: "עבודה עם בוט-כלי:",
+    explanationPoints: [
+      "אתה נותנת הוראות ברורות ← הוא מבצע בדיוק",
+      "מקבלת תוצאות מדויקות ומבוססות נתונים",
+      "חוסכת זמן בעבודות שגרה (חישובים, בדיקות)",
+      "הבקרה שלך מלאה על התהליך והתוצאה",
+    ],
     topics: [
       {
         id: 1,
@@ -45,6 +54,13 @@ export const sessions: Session[] = [
     letter: "ב'",
     title: "AI כמחולל (שותף)",
     subtitle: "שימוש ב-AI כשותף יצירתי ומחולל תוכן",
+    explanationTitle: "עבודה עם בוט-מחולל:",
+    explanationPoints: [
+      "אתה מתחילה דיאלוג רעיוני ← הוא מציע כיוונים",
+      "מקבלת הפתעות ורעיונות לא צפויים",
+      "הוא מזרז את השלב היצירתי (brain storming)",
+      "את שומרת שליטה על ההחלטות הסופיות",
+    ],
     topics: [
       {
         id: 1,
