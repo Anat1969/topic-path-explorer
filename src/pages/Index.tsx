@@ -55,6 +55,21 @@ const Index = () => {
                   </div>
                 </CardHeader>
 
+                {/* Explanation */}
+                <div className="px-5 pt-4 pb-2">
+                  <h3 className="font-bold text-foreground mb-2 text-base border-b-2 border-primary inline-block pb-1">
+                    {session.explanationTitle}
+                  </h3>
+                  <ul className="space-y-1.5 mt-2">
+                    {session.explanationPoints.map((point, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <span className="text-primary mt-0.5">•</span>
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
                 {/* Topics */}
                 <CardContent className="p-4 space-y-3">
                   {session.topics.map((topic) => (
