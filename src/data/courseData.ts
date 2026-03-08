@@ -54,6 +54,13 @@ export const sessions: Session[] = [
     letter: "ב'",
     title: "AI כמחולל (שותף)",
     subtitle: "שימוש ב-AI כשותף יצירתי ומחולל תוכן",
+    explanationTitle: "עבודה עם בוט-מחולל:",
+    explanationPoints: [
+      "אתה מתחילה דיאלוג רעיוני ← הוא מציע כיוונים",
+      "מקבלת הפתעות ורעיונות לא צפויים",
+      "הוא מזרז את השלב היצירתי (brain storming)",
+      "את שומרת שליטה על ההחלטות הסופיות",
+    ],
     topics: [
       {
         id: 1,
