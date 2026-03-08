@@ -13,6 +13,7 @@ import { useAuth } from "@/contexts/AuthContext";
 const TopicPage = () => {
   const { sessionId, topicId } = useParams();
   const navigate = useNavigate();
+  const { user, signOut } = useAuth();
 
   const session = sessions.find((s) => s.id === sessionId);
   const topic = session?.topics.find((t) => t.id === Number(topicId));
