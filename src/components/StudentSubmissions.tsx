@@ -158,6 +158,12 @@ export function StudentSubmissions({ sessionId, topicId }: Props) {
         <Card className="mb-8">
           <CardContent className="p-5 space-y-4">
             <p className="font-semibold text-foreground">שתפו את התרגיל שלכם</p>
+            <Input
+              placeholder="השם שלכם"
+              value={displayName}
+              onChange={(e) => setDisplayName(e.target.value)}
+              maxLength={50}
+            />
             <Textarea
               placeholder="תארו את התרגיל שעשיתם..."
               value={description}
