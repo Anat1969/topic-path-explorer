@@ -4,8 +4,9 @@ import { lessonSteps } from "@/data/lessonData";
 import { lesson2Steps } from "@/data/lesson2Data";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, Construction, ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { ArrowRight, ArrowLeft, Construction, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useCallback, useEffect } from "react";
+import type { LessonStep } from "@/data/lessonData";
 
 const TopicPage = () => {
   const { sessionId, topicId } = useParams();
@@ -14,7 +15,6 @@ const TopicPage = () => {
   const session = sessions.find((s) => s.id === sessionId);
   const topic = session?.topics.find((t) => t.id === Number(topicId));
 
-  // Determine which lesson content to show
   const getLessonSteps = () => {
     if (sessionId === "a" && topicId === "1") return lessonSteps;
     if (sessionId === "a" && topicId === "2") return lesson2Steps;
@@ -32,12 +32,12 @@ const TopicPage = () => {
 
   return (
     <div dir="rtl" className="min-h-screen bg-background">
-      <header className="border-b bg-primary py-6 px-4">
+      <header className="border-b bg-primary py-4 px-4">
         <div className="container mx-auto">
           <Button
             variant="ghost"
             onClick={() => navigate("/")}
-            className="mb-4 gap-2 text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10"
+            className="mb-2 gap-2 text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10"
           >
             <ArrowRight className="h-4 w-4" />
             חזרה לדשבורד
@@ -45,20 +45,15 @@ const TopicPage = () => {
           <p className="text-primary-foreground/60 text-sm mb-1">
             מפגש {session.letter} – {session.title}
           </p>
-          <h1 className="text-3xl font-bold text-primary-foreground">
+          <h1 className="text-2xl font-bold text-primary-foreground">
             {topic.id}. {topic.title} – {topic.subtitle}
           </h1>
-          <p className="text-primary-foreground/70 mt-2">{topic.description}</p>
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-10">
+      <main className="container mx-auto px-4 py-6">
         {currentLessonSteps ? (
-          <div className="max-w-4xl mx-auto space-y-8">
-            {currentLessonSteps.map((step) => (
-              <LessonStepCard key={step.id} step={step} />
-            ))}
-          </div>
+          <LessonSlideshow steps={currentLessonSteps} />
         ) : (
           <Card className="max-w-md mx-auto text-center">
             <CardContent className="py-12 space-y-4">
@@ -75,48 +70,122 @@ const TopicPage = () => {
   );
 };
 
-function LessonStepCard({ step }: { step: (typeof lessonSteps)[0] }) {
-  const [expanded, setExpanded] = useState(step.id <= 2);
+function LessonSlideshow({ steps }: { steps: LessonStep[] }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const step = steps[currentIndex];
+  const total = steps.length;
+
+  const goNext = useCallback(() => {
+    setCurrentIndex((i) => Math.min(i + 1, total - 1));
+  }, [total]);
+
+  const goPrev = useCallback(() => {
+    setCurrentIndex((i) => Math.max(i - 1, 0));
+  }, []);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") goNext(); // RTL: left = forward
+      if (e.key === "ArrowRight") goPrev(); // RTL: right = backward
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [goNext, goPrev]);
+
+  // Click on image sides for navigation
+  const handleImageClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const halfWidth = rect.width / 2;
+    // RTL: right side = previous, left side = next
+    if (clickX < halfWidth) {
+      goNext();
+    } else {
+      goPrev();
+    }
+  };
 
   return (
-    <Card className="overflow-hidden border transition-shadow hover:shadow-md">
-      <button
-        onClick={() => setExpanded(!expanded)}
-        className="w-full text-right"
-      >
-        <div className="flex items-center gap-4 p-5 bg-secondary/40">
-          <span className="inline-flex items-center justify-center w-9 h-9 rounded-full text-sm font-bold bg-primary text-primary-foreground shrink-0">
-            {step.id}
-          </span>
-          <h3 className="font-semibold text-foreground text-lg flex-1">
-            {step.title}
-          </h3>
-          <ChevronDown
-            className={`h-5 w-5 text-muted-foreground transition-transform duration-200 ${
-              expanded ? "rotate-180" : ""
-            }`}
+    <div className="max-w-5xl mx-auto">
+      {/* Progress bar */}
+      <div className="flex items-center gap-3 mb-4">
+        <span className="text-sm font-medium text-muted-foreground">
+          {currentIndex + 1} / {total}
+        </span>
+        <div className="flex-1 h-1.5 bg-muted rounded-full overflow-hidden">
+          <div
+            className="h-full bg-primary rounded-full transition-all duration-300"
+            style={{ width: `${((currentIndex + 1) / total) * 100}%` }}
           />
         </div>
-      </button>
+      </div>
 
-      {expanded && (
-        <CardContent className="p-0">
-          <div className="p-5">
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              {step.content}
-            </p>
+      {/* Title bar */}
+      <div className="flex items-center gap-3 mb-4">
+        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full text-sm font-bold bg-primary text-primary-foreground shrink-0">
+          {step.id}
+        </span>
+        <h3 className="font-bold text-foreground text-xl flex-1">
+          {step.title}
+        </h3>
+      </div>
+
+      {/* Slide area */}
+      <div
+        className="relative rounded-xl overflow-hidden bg-muted/30 border shadow-lg cursor-pointer select-none group"
+        onClick={handleImageClick}
+      >
+        <img
+          src={step.image}
+          alt={step.imageAlt}
+          className="w-full block"
+          draggable={false}
+        />
+
+        {/* Hover navigation hints */}
+        {currentIndex < total - 1 && (
+          <div className="absolute inset-y-0 left-0 w-1/4 flex items-center justify-start pl-3 opacity-0 group-hover:opacity-100 transition-opacity">
+            <div className="bg-foreground/60 text-background rounded-full p-2">
+              <ChevronLeft className="h-6 w-6" />
+            </div>
           </div>
-          <div className="border-t bg-muted/30 p-3">
-            <img
-              src={step.image}
-              alt={step.imageAlt}
-              className="w-full rounded-lg shadow-sm"
-              loading="lazy"
-            />
+        )}
+        {currentIndex > 0 && (
+          <div className="absolute inset-y-0 right-0 w-1/4 flex items-center justify-end pr-3 opacity-0 group-hover:opacity-100 transition-opacity">
+            <div className="bg-foreground/60 text-background rounded-full p-2">
+              <ChevronRight className="h-6 w-6" />
+            </div>
           </div>
-        </CardContent>
-      )}
-    </Card>
+        )}
+      </div>
+
+      {/* Description */}
+      <p className="text-muted-foreground leading-relaxed mt-4 text-base">
+        {step.content}
+      </p>
+
+      {/* Bottom navigation buttons */}
+      <div className="flex items-center justify-between mt-6">
+        <Button
+          variant="outline"
+          onClick={goPrev}
+          disabled={currentIndex === 0}
+          className="gap-2"
+        >
+          <ArrowRight className="h-4 w-4" />
+          הקודם
+        </Button>
+        <Button
+          onClick={goNext}
+          disabled={currentIndex === total - 1}
+          className="gap-2"
+        >
+          הבא
+          <ArrowLeft className="h-4 w-4" />
+        </Button>
+      </div>
+    </div>
   );
 }
 
