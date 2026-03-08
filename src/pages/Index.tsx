@@ -1,12 +1,125 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useNavigate } from "react-router-dom";
+import { sessions } from "@/data/courseData";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft, BookOpen, Sparkles, Cpu } from "lucide-react";
+
+const sessionIcons = [Cpu, Sparkles];
 
 const Index = () => {
+  const navigate = useNavigate();
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div dir="rtl" className="min-h-screen bg-background">
+      {/* Header */}
+      <header className="border-b bg-card py-8 px-4">
+        <div className="container mx-auto text-center">
+          <div className="flex items-center justify-center gap-3 mb-3">
+            <BookOpen className="h-8 w-8 text-primary" />
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground">
+              קורס מתקדם – AI ויצירה
+            </h1>
+          </div>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            שתי מפגשים, שישה נושאים – מסע מעמיק לעולם היצירה עם בינה מלאכותית
+          </p>
+        </div>
+      </header>
+
+      {/* Sessions Grid */}
+      <main className="container mx-auto px-4 py-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {sessions.map((session, sessionIndex) => {
+            const Icon = sessionIcons[sessionIndex];
+            const isFirst = sessionIndex === 0;
+
+            return (
+              <Card
+                key={session.id}
+                className={`overflow-hidden border-2 ${
+                  isFirst ? "border-primary/20" : "border-accent/40"
+                }`}
+              >
+                {/* Session Header */}
+                <CardHeader
+                  className={`${
+                    isFirst
+                      ? "bg-primary/5"
+                      : "bg-accent/10"
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <div
+                      className={`flex items-center justify-center w-12 h-12 rounded-xl ${
+                        isFirst
+                          ? "bg-primary/10 text-primary"
+                          : "bg-accent/20 text-accent-foreground"
+                      }`}
+                    >
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl">
+                        מפגש {session.letter} – {session.title}
+                      </CardTitle>
+                      <CardDescription className="mt-1">
+                        {session.subtitle}
+                      </CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+
+                {/* Topics */}
+                <CardContent className="p-4 space-y-3">
+                  {session.topics.map((topic) => (
+                    <Card
+                      key={topic.id}
+                      className="group cursor-pointer transition-all duration-200 hover:shadow-md hover:border-primary/30"
+                      onClick={() =>
+                        navigate(`/session/${session.id}/topic/${topic.id}`)
+                      }
+                    >
+                      <CardContent className="p-4">
+                        <div className="flex items-start justify-between gap-4">
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-1">
+                              <span
+                                className={`inline-flex items-center justify-center w-7 h-7 rounded-full text-sm font-bold ${
+                                  isFirst
+                                    ? "bg-primary/10 text-primary"
+                                    : "bg-secondary text-secondary-foreground"
+                                }`}
+                              >
+                                {topic.id}
+                              </span>
+                              <h3 className="font-semibold text-foreground text-lg">
+                                {topic.title}
+                              </h3>
+                              <span className="text-muted-foreground text-sm">
+                                – {topic.subtitle}
+                              </span>
+                            </div>
+                            <p className="text-muted-foreground text-sm mr-9">
+                              {topic.description}
+                            </p>
+                          </div>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="shrink-0 mt-1 group-hover:bg-primary/10 group-hover:text-primary transition-colors"
+                          >
+                            <ArrowLeft className="h-4 w-4" />
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
+      </main>
     </div>
   );
 };
