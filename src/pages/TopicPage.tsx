@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { sessions } from "@/data/courseData";
 import { lessonSteps } from "@/data/lessonData";
 import { lesson2Steps } from "@/data/lesson2Data";
+import { lesson3Steps } from "@/data/lesson3Data";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, ArrowLeft, Construction, ChevronLeft, ChevronRight } from "lucide-react";
