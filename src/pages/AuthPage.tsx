@@ -36,7 +36,11 @@ const AuthPage = () => {
     if (isLogin) {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) {
-        toast({ title: "שגיאה בהתחברות", description: error.message, variant: "destructive" });
+        if (error.message === "Invalid login credentials") {
+          toast({ title: "שגיאה בהתחברות", description: "פרטי ההתחברות שגויים. אם נרשמת עם Google, לחץ על 'התחבר עם Google'.", variant: "destructive" });
+        } else {
+          toast({ title: "שגיאה בהתחברות", description: error.message, variant: "destructive" });
+        }
       } else {
         navigate("/");
       }
