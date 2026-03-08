@@ -53,9 +53,9 @@ const TopicPage = () => {
       </header>
 
       <main className="container mx-auto px-4 py-10">
-        {hasLesson ? (
+        {currentLessonSteps ? (
           <div className="max-w-4xl mx-auto space-y-8">
-            {lessonSteps.map((step) => (
+            {currentLessonSteps.map((step) => (
               <LessonStepCard key={step.id} step={step} />
             ))}
           </div>
