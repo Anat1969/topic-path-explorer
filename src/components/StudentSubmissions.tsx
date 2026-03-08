@@ -36,13 +36,27 @@ export function StudentSubmissions({ sessionId, topicId }: Props) {
   const fetchSubmissions = async () => {
     const { data, error } = await supabase
       .from("student_submissions")
-      .select("*, profiles(display_name)")
+      .select("*")
       .eq("session_id", sessionId)
       .eq("topic_id", topicId)
       .order("created_at", { ascending: false });
 
     if (!error && data) {
-      setSubmissions(data as Submission[]);
+      // Fetch profile names for each unique user
+      const userIds = [...new Set(data.map((d) => d.user_id))];
+      const { data: profiles } = await supabase
+        .from("profiles")
+        .select("user_id, display_name")
+        .in("user_id", userIds);
+
+      const profileMap = new Map(profiles?.map((p) => [p.user_id, p.display_name]) ?? []);
+
+      setSubmissions(
+        data.map((d) => ({
+          ...d,
+          profiles: { display_name: profileMap.get(d.user_id) ?? "סטודנט" },
+        }))
+      );
     }
     setLoading(false);
   };
