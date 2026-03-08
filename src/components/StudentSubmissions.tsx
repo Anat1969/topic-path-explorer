@@ -32,6 +32,22 @@ export function StudentSubmissions({ sessionId, topicId }: Props) {
   const [preview, setPreview] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [displayName, setDisplayName] = useState("");
+  const [nameLoaded, setNameLoaded] = useState(false);
+
+  // Load user's current display name
+  useEffect(() => {
+    if (!user) return;
+    supabase
+      .from("profiles")
+      .select("display_name")
+      .eq("user_id", user.id)
+      .maybeSingle()
+      .then(({ data }) => {
+        if (data?.display_name) setDisplayName(data.display_name);
+        setNameLoaded(true);
+      });
+  }, [user]);
 
   const fetchSubmissions = async () => {
     const { data, error } = await supabase
@@ -74,12 +90,19 @@ export function StudentSubmissions({ sessionId, topicId }: Props) {
   };
 
   const handleSubmit = async () => {
-    if (!user || !file || !description.trim()) {
-      toast({ title: "יש למלא תיאור ולהעלות תמונה", variant: "destructive" });
+    if (!user || !file || !description.trim() || !displayName.trim()) {
+      toast({ title: "יש למלא שם, תיאור ולהעלות תמונה", variant: "destructive" });
       return;
     }
 
     setUploading(true);
+
+    // Update display name in profile
+    await supabase
+      .from("profiles")
+      .update({ display_name: displayName.trim() })
+      .eq("user_id", user.id);
+
     const ext = file.name.split(".").pop();
     const path = `${user.id}/${Date.now()}.${ext}`;
 
@@ -135,6 +158,12 @@ export function StudentSubmissions({ sessionId, topicId }: Props) {
         <Card className="mb-8">
           <CardContent className="p-5 space-y-4">
             <p className="font-semibold text-foreground">שתפו את התרגיל שלכם</p>
+            <Input
+              placeholder="השם שלכם"
+              value={displayName}
+              onChange={(e) => setDisplayName(e.target.value)}
+              maxLength={50}
+            />
             <Textarea
               placeholder="תארו את התרגיל שעשיתם..."
               value={description}
@@ -152,7 +181,7 @@ export function StudentSubmissions({ sessionId, topicId }: Props) {
                   onChange={handleFileChange}
                 />
               </label>
-              <Button onClick={handleSubmit} disabled={uploading || !file || !description.trim()}>
+              <Button onClick={handleSubmit} disabled={uploading || !file || !description.trim() || !displayName.trim()}>
                 {uploading ? "מעלה..." : "שתף"}
               </Button>
             </div>
