@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { sessions } from "@/data/courseData";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, BookOpen, Sparkles, Cpu } from "lucide-react";
+import { ArrowLeft, BookOpen, Sparkles, Cpu, Play } from "lucide-react";
 
 const sessionIcons = [Cpu, Sparkles];
 
