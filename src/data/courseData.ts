@@ -10,6 +10,8 @@ export interface Session {
   letter: string;
   title: string;
   subtitle: string;
+  explanationTitle: string;
+  explanationPoints: string[];
   topics: Topic[];
 }
 
