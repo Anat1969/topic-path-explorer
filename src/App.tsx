@@ -23,6 +23,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/auth" element={<AuthPage />} />
             <Route path="/session/:sessionId/topic/:topicId" element={<TopicPage />} />
+            <Route path="/editor" element={<EditorDashboard />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
