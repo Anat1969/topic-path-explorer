@@ -90,12 +90,19 @@ export function StudentSubmissions({ sessionId, topicId }: Props) {
   };
 
   const handleSubmit = async () => {
-    if (!user || !file || !description.trim()) {
-      toast({ title: "יש למלא תיאור ולהעלות תמונה", variant: "destructive" });
+    if (!user || !file || !description.trim() || !displayName.trim()) {
+      toast({ title: "יש למלא שם, תיאור ולהעלות תמונה", variant: "destructive" });
       return;
     }
 
     setUploading(true);
+
+    // Update display name in profile
+    await supabase
+      .from("profiles")
+      .update({ display_name: displayName.trim() })
+      .eq("user_id", user.id);
+
     const ext = file.name.split(".").pop();
     const path = `${user.id}/${Date.now()}.${ext}`;
 
