@@ -166,21 +166,20 @@ function LessonSlideshow({ steps }: { steps: LessonStep[] }) {
           draggable={false}
         />
 
-        {/* Hover navigation hints */}
-        {currentIndex < total - 1 && (
-          <div className="absolute inset-y-0 left-0 w-1/4 flex items-center justify-start pl-3 opacity-0 group-hover:opacity-100 transition-opacity">
-            <div className="bg-foreground/60 text-background rounded-full p-2">
-              <ChevronLeft className="h-6 w-6" />
-            </div>
-          </div>
-        )}
-        {currentIndex > 0 && (
-          <div className="absolute inset-y-0 right-0 w-1/4 flex items-center justify-end pr-3 opacity-0 group-hover:opacity-100 transition-opacity">
-            <div className="bg-foreground/60 text-background rounded-full p-2">
-              <ChevronRight className="h-6 w-6" />
-            </div>
-          </div>
-        )}
+      </div>
+
+      {/* Navigation arrows outside the card */}
+      <div className="flex justify-between mt-2 px-0">
+        {currentIndex < total - 1 ? (
+          <button onClick={goNext} className="p-2 rounded-full bg-muted hover:bg-muted/80 transition-colors">
+            <ChevronLeft className="h-6 w-6 text-foreground" />
+          </button>
+        ) : <div />}
+        {currentIndex > 0 ? (
+          <button onClick={goPrev} className="p-2 rounded-full bg-muted hover:bg-muted/80 transition-colors">
+            <ChevronRight className="h-6 w-6 text-foreground" />
+          </button>
+        ) : <div />}
       </div>
 
       {/* Description */}
