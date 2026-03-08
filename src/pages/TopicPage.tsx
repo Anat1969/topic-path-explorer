@@ -81,6 +81,13 @@ const TopicPage = () => {
             </CardContent>
           </Card>
         )}
+
+        {/* Student submissions section */}
+        {sessionId && topicId && (
+          <div className="max-w-5xl mx-auto">
+            <StudentSubmissions sessionId={sessionId} topicId={topicId} />
+          </div>
+        )}
       </main>
     </div>
   );
