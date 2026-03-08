@@ -47,10 +47,12 @@ const EditorDashboard = () => {
       ? await supabase.from("profiles").select("user_id, display_name").in("user_id", userIds)
       : { data: [] };
 
-    const profileMap = new Map(profiles?.map((p) => [p.user_id, p.display_name]) ?? []);
+    const profileMap = new Map<string, string>(
+      (profiles ?? []).map((p: { user_id: string; display_name: string }) => [p.user_id, p.display_name])
+    );
 
     setSubmissions(
-      data.map((d) => ({ ...d, display_name: profileMap.get(d.user_id) ?? "סטודנט" }))
+      data.map((d) => ({ ...d, display_name: profileMap.get(d.user_id) ?? "סטודנט" } as Submission))
     );
     setLoading(false);
   };
