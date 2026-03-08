@@ -12,15 +12,15 @@ const Index = () => {
   return (
     <div dir="rtl" className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b bg-card py-8 px-4">
+      <header className="bg-primary py-10 px-4">
         <div className="container mx-auto text-center">
           <div className="flex items-center justify-center gap-3 mb-3">
-            <BookOpen className="h-8 w-8 text-primary" />
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground">
+            <BookOpen className="h-8 w-8 text-primary-foreground/80" />
+            <h1 className="text-3xl md:text-4xl font-bold text-primary-foreground">
               קורס מתקדם – AI ויצירה
             </h1>
           </div>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto">
             שתי מפגשים, שישה נושאים – מסע מעמיק לעולם היצירה עם בינה מלאכותית
           </p>
         </div>
@@ -36,30 +36,16 @@ const Index = () => {
             return (
               <Card
                 key={session.id}
-                className={`overflow-hidden border-2 ${
-                  isFirst ? "border-primary/20" : "border-accent/40"
-                }`}
+                className="overflow-hidden border shadow-sm"
               >
                 {/* Session Header */}
-                <CardHeader
-                  className={`${
-                    isFirst
-                      ? "bg-primary/5"
-                      : "bg-accent/10"
-                  }`}
-                >
+                <CardHeader className="bg-secondary/60 border-b border-border">
                   <div className="flex items-center gap-3">
-                    <div
-                      className={`flex items-center justify-center w-12 h-12 rounded-xl ${
-                        isFirst
-                          ? "bg-primary/10 text-primary"
-                          : "bg-accent/20 text-accent-foreground"
-                      }`}
-                    >
+                    <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-primary text-primary-foreground">
                       <Icon className="h-6 w-6" />
                     </div>
                     <div>
-                      <CardTitle className="text-xl">
+                      <CardTitle className="text-xl text-foreground">
                         מפגש {session.letter} – {session.title}
                       </CardTitle>
                       <CardDescription className="mt-1">
@@ -74,7 +60,7 @@ const Index = () => {
                   {session.topics.map((topic) => (
                     <Card
                       key={topic.id}
-                      className="group cursor-pointer transition-all duration-200 hover:shadow-md hover:border-primary/30"
+                      className="group cursor-pointer transition-all duration-200 hover:shadow-md hover:border-primary/40 border"
                       onClick={() =>
                         navigate(`/session/${session.id}/topic/${topic.id}`)
                       }
@@ -83,13 +69,7 @@ const Index = () => {
                         <div className="flex items-start justify-between gap-4">
                           <div className="flex-1">
                             <div className="flex items-center gap-2 mb-1">
-                              <span
-                                className={`inline-flex items-center justify-center w-7 h-7 rounded-full text-sm font-bold ${
-                                  isFirst
-                                    ? "bg-primary/10 text-primary"
-                                    : "bg-secondary text-secondary-foreground"
-                                }`}
-                              >
+                              <span className="inline-flex items-center justify-center w-7 h-7 rounded-full text-sm font-bold bg-primary text-primary-foreground">
                                 {topic.id}
                               </span>
                               <h3 className="font-semibold text-foreground text-lg">
