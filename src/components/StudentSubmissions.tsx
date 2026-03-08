@@ -181,7 +181,7 @@ export function StudentSubmissions({ sessionId, topicId }: Props) {
                   onChange={handleFileChange}
                 />
               </label>
-              <Button onClick={handleSubmit} disabled={uploading || !file || !description.trim()}>
+              <Button onClick={handleSubmit} disabled={uploading || !file || !description.trim() || !displayName.trim()}>
                 {uploading ? "מעלה..." : "שתף"}
               </Button>
             </div>
