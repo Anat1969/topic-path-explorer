@@ -8,6 +8,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
 import { Upload, Trash2, ImageIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { exercisesByTopic } from "@/data/exerciseData";
+import { ExerciseGuide } from "@/components/ExerciseGuide";
 
 interface Submission {
   id: string;
@@ -146,12 +148,22 @@ export function StudentSubmissions({ sessionId, topicId }: Props) {
     }
   };
 
+  const exerciseKey = `${sessionId}-${topicId}`;
+  const exercise = exercisesByTopic[exerciseKey];
+
   return (
     <div className="mt-12 border-t pt-8">
       <h2 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
         <ImageIcon className="h-5 w-5 text-primary" />
         תרגילי סטודנטים
       </h2>
+
+      {/* Exercise guide */}
+      {exercise && (
+        <div className="mb-8">
+          <ExerciseGuide exercise={exercise} />
+        </div>
+      )}
 
       {/* Upload form */}
       {user ? (
