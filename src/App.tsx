@@ -22,6 +22,7 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/intro" element={<IntroPage />} />
             <Route path="/auth" element={<AuthPage />} />
             <Route path="/session/:sessionId/topic/:topicId" element={<TopicPage />} />
             <Route path="/editor" element={<EditorDashboard />} />
