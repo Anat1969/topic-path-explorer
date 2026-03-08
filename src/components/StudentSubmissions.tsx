@@ -8,6 +8,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
 import { Upload, Trash2, ImageIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { exercisesByTopic } from "@/data/exerciseData";
+import { ExerciseGuide } from "@/components/ExerciseGuide";
 
 interface Submission {
   id: string;
