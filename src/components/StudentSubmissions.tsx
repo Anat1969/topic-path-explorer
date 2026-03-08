@@ -32,6 +32,22 @@ export function StudentSubmissions({ sessionId, topicId }: Props) {
   const [preview, setPreview] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [displayName, setDisplayName] = useState("");
+  const [nameLoaded, setNameLoaded] = useState(false);
+
+  // Load user's current display name
+  useEffect(() => {
+    if (!user) return;
+    supabase
+      .from("profiles")
+      .select("display_name")
+      .eq("user_id", user.id)
+      .maybeSingle()
+      .then(({ data }) => {
+        if (data?.display_name) setDisplayName(data.display_name);
+        setNameLoaded(true);
+      });
+  }, [user]);
 
   const fetchSubmissions = async () => {
     const { data, error } = await supabase
