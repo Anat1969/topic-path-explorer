@@ -36,21 +36,34 @@ const TopicPage = () => {
   return (
     <div dir="rtl" className="min-h-screen bg-background">
       <header className="border-b bg-primary py-4 px-4">
-        <div className="container mx-auto">
-          <Button
-            variant="ghost"
-            onClick={() => navigate("/")}
-            className="mb-2 gap-2 text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10"
-          >
-            <ArrowRight className="h-4 w-4" />
-            חזרה לדשבורד
-          </Button>
-          <p className="text-primary-foreground/60 text-sm mb-1">
-            מפגש {session.letter} – {session.title}
-          </p>
-          <h1 className="text-2xl font-bold text-primary-foreground">
-            {topic.id}. {topic.title} – {topic.subtitle}
-          </h1>
+        <div className="container mx-auto flex items-start justify-between">
+          <div>
+            <Button
+              variant="ghost"
+              onClick={() => navigate("/")}
+              className="mb-2 gap-2 text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10"
+            >
+              <ArrowRight className="h-4 w-4" />
+              חזרה לדשבורד
+            </Button>
+            <p className="text-primary-foreground/60 text-sm mb-1">
+              מפגש {session.letter} – {session.title}
+            </p>
+            <h1 className="text-2xl font-bold text-primary-foreground">
+              {topic.id}. {topic.title} – {topic.subtitle}
+            </h1>
+          </div>
+          <div className="pt-1">
+            {user ? (
+              <Button variant="ghost" onClick={signOut} className="text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10 text-sm">
+                התנתק
+              </Button>
+            ) : (
+              <Button variant="ghost" onClick={() => navigate("/auth")} className="text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10 text-sm">
+                התחברות
+              </Button>
+            )}
+          </div>
         </div>
       </header>
 
