@@ -4,6 +4,7 @@ import { lessonSteps } from "@/data/lessonData";
 import { lesson2Steps } from "@/data/lesson2Data";
 import { lesson3Steps } from "@/data/lesson3Data";
 import { lesson4Steps } from "@/data/lesson4Data";
+import { lesson5Steps } from "@/data/lesson5Data";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, ArrowLeft, Construction, ChevronLeft, ChevronRight } from "lucide-react";
@@ -25,6 +26,7 @@ const TopicPage = () => {
     if (sessionId === "a" && topicId === "2") return lesson2Steps;
     if (sessionId === "a" && topicId === "3") return lesson3Steps;
     if (sessionId === "b" && topicId === "1") return lesson4Steps;
+    if (sessionId === "b" && topicId === "2") return lesson5Steps;
     return null;
   };
   const currentLessonSteps = getLessonSteps();
