@@ -14,8 +14,13 @@ const TopicPage = () => {
   const session = sessions.find((s) => s.id === sessionId);
   const topic = session?.topics.find((t) => t.id === Number(topicId));
 
-  // Only session a, topic 1 has lesson content
-  const hasLesson = sessionId === "a" && topicId === "1";
+  // Determine which lesson content to show
+  const getLessonSteps = () => {
+    if (sessionId === "a" && topicId === "1") return lessonSteps;
+    if (sessionId === "a" && topicId === "2") return lesson2Steps;
+    return null;
+  };
+  const currentLessonSteps = getLessonSteps();
 
   if (!session || !topic) {
     return (
