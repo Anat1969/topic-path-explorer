@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { sessions } from "@/data/courseData";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, BookOpen, Sparkles, Cpu } from "lucide-react";
+import { ArrowLeft, BookOpen, Sparkles, Cpu, Play } from "lucide-react";
 
 const sessionIcons = [Cpu, Sparkles];
 
@@ -20,9 +20,17 @@ const Index = () => {
               קורס מתקדם – AI ויצירה
             </h1>
           </div>
-          <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto">
+           <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto mb-4">
             שתי מפגשים, שישה נושאים – מסע מעמיק לעולם היצירה עם בינה מלאכותית
           </p>
+          <Button
+            variant="secondary"
+            onClick={() => navigate("/intro")}
+            className="gap-2"
+          >
+            <Play className="h-4 w-4" />
+            הקדמה לקורס
+          </Button>
         </div>
       </header>
 
