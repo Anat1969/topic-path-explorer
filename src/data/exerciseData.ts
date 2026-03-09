@@ -146,10 +146,12 @@ export const exercisesByTopic: Record<string, ExerciseInfo> = {
       inputDescription:
         'ייעוד: "משרד" – בקשו פרשנות מתמטית-פיזיקלית: איזה מושג מדעי מתאים לתכנון משרד אידיאלי? כיצד הוא מתורגם לעיצוב?',
       inputImage: lesson5Input,
+      inputSlideIndex: 4,
       outputLabel: "פלט – פרשנות לוגית + המחשה",
       outputDescription:
         'משרד = תורת הרשתות (Network Theory): 1. מבנה רשתי אופטימלי – כל עמדת עבודה כצומת, 2. דינמיק זרימה – מסלולי תנועה לפי הידרודינמיקה, 3. אקוסטיקה רשתית – אזורי שקט ותקשורת. המחשה בסגנונות Foster+Partners, Zaha Hadid.',
       outputImage: lesson5Output,
+      outputSlideIndex: 5,
     },
   },
   "b-3": {
