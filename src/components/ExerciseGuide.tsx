@@ -52,14 +52,23 @@ export function ExerciseGuide({ exercise }: Props) {
 
           <div className="grid gap-4 md:grid-cols-2">
             {/* Input */}
-            <div className="rounded-lg border border-primary/20 bg-background p-4 space-y-2">
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-primary">קלט</span>
+            <div className="rounded-lg border border-primary/20 bg-background overflow-hidden">
+              {exercise.example.inputImage && (
+                <img
+                  src={exercise.example.inputImage}
+                  alt={exercise.example.inputLabel}
+                  className="w-full h-40 object-cover"
+                />
+              )}
+              <div className="p-4 space-y-2">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-bold uppercase tracking-wider text-primary">קלט</span>
+                </div>
+                <p className="text-sm font-medium text-foreground">{exercise.example.inputLabel}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {exercise.example.inputDescription}
+                </p>
               </div>
-              <p className="text-sm font-medium text-foreground">{exercise.example.inputLabel}</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {exercise.example.inputDescription}
-              </p>
             </div>
 
             {/* Arrow for mobile */}
@@ -68,14 +77,23 @@ export function ExerciseGuide({ exercise }: Props) {
             </div>
 
             {/* Output */}
-            <div className="rounded-lg border border-primary/20 bg-background p-4 space-y-2">
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-primary">פלט</span>
+            <div className="rounded-lg border border-primary/20 bg-background overflow-hidden">
+              {exercise.example.outputImage && (
+                <img
+                  src={exercise.example.outputImage}
+                  alt={exercise.example.outputLabel}
+                  className="w-full h-40 object-cover"
+                />
+              )}
+              <div className="p-4 space-y-2">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-bold uppercase tracking-wider text-primary">פלט</span>
+                </div>
+                <p className="text-sm font-medium text-foreground">{exercise.example.outputLabel}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {exercise.example.outputDescription}
+                </p>
               </div>
-              <p className="text-sm font-medium text-foreground">{exercise.example.outputLabel}</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {exercise.example.outputDescription}
-              </p>
             </div>
           </div>
         </CardContent>
