@@ -161,7 +161,7 @@ export function StudentSubmissions({ sessionId, topicId }: Props) {
 
         {exercise && (
           <div className="mb-8">
-            <ExerciseGuide exercise={exercise} />
+            <ExerciseGuide exercise={exercise} onNavigateToSlide={onNavigateToSlide} />
           </div>
         )}
 
