@@ -98,10 +98,12 @@ export const exercisesByTopic: Record<string, ExerciseInfo> = {
       inputDescription:
         'הנחיות: "אתה אדריכל, מומחה בתחומך. יש לך צוות יועצים. צור מחשבון חלוקת שטחים לדירה לפי שטח כולל – סלון, מטבח, חדרי שינה, עם אחוזים והסברים."',
       inputImage: lesson3Input,
+      inputSlideIndex: 2,
       outputLabel: "פלט – ממשק מחשבון אינטראקטיבי",
       outputDescription:
         "מחשבון חלוקת שטחים לדירה: המשתמש ממלא שטח דירה (100 מ\"ר), הממשק מציע חלוקה – סלון 25% (25 מ\"ר, 4.2×5.9), מטבח 8% (8 מ\"ר, 3.4×2.4), חדר הורים 15%, חדר שינה 12%.",
       outputImage: lesson3Output,
+      outputSlideIndex: 7,
     },
   },
   "b-1": {
