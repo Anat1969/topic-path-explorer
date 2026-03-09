@@ -147,7 +147,7 @@ function IntroSlideshow({ steps }: { steps: LessonStep[] }) {
   return (
     <div className="max-w-5xl mx-auto">
       <div className="flex items-center gap-3 mb-4">
-        <span className="text-sm font-medium text-muted-foreground">
+        <span className="text-base font-medium text-muted-foreground">
           {currentIndex + 1} / {total}
         </span>
         <div className="flex-1 h-1.5 bg-muted rounded-full overflow-hidden">
