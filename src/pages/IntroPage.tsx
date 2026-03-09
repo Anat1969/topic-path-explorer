@@ -223,12 +223,12 @@ function SummarySection() {
   return (
     <div className="max-w-5xl mx-auto mt-16 mb-12">
       <div className="border-t pt-10">
-        <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-          <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground text-lg font-bold">✦</span>
+        <h2 className="text-3xl font-bold text-foreground mb-6 flex items-center gap-3">
+          <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground text-xl font-bold">✦</span>
           סיכום ההקדמה
         </h2>
-        <Card className="bg-muted/30">
-          <CardContent className="p-6 space-y-4 text-foreground leading-relaxed">
+        <Card className="bg-muted/50 border-muted">
+          <CardContent className="p-8 space-y-5 text-foreground leading-relaxed text-lg">
             <p>
               <strong>עוגת הידע:</strong> שלושה אזורים – מה שאנחנו יודעים (אדום), מה שאנחנו מכירים אבל לא יודעים (כתום), ומה שלא מכירים ולא יודעים (צהוב). המטרה – להרחיב את הצהוב ולהפוך אותו לאדום.
             </p>
