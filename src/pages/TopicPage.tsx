@@ -105,35 +105,49 @@ const TopicPage = () => {
   );
 };
 
-function LessonSlideshow({ steps }: { steps: LessonStep[] }) {
+function LessonSlideshowWithSubmissions({ steps, sessionId, topicId }: { steps: LessonStep[]; sessionId: string; topicId: string }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNavigateToSlide = useCallback((slideIndex: number) => {
+    setCurrentIndex(Math.max(0, Math.min(slideIndex, steps.length - 1)));
+  }, [steps.length]);
+
+  return (
+    <>
+      <LessonSlideshow steps={steps} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
+      <div className="max-w-5xl mx-auto">
+        <StudentSubmissions sessionId={sessionId} topicId={topicId} onNavigateToSlide={handleNavigateToSlide} />
+      </div>
+    </>
+  );
+}
+
+function LessonSlideshow({ steps, currentIndex, setCurrentIndex }: { steps: LessonStep[]; currentIndex: number; setCurrentIndex: React.Dispatch<React.SetStateAction<number>> }) {
   const step = steps[currentIndex];
   const total = steps.length;
 
   const goNext = useCallback(() => {
     setCurrentIndex((i) => Math.min(i + 1, total - 1));
-  }, [total]);
+  }, [total, setCurrentIndex]);
 
   const goPrev = useCallback(() => {
     setCurrentIndex((i) => Math.max(i - 1, 0));
-  }, []);
+  }, [setCurrentIndex]);
 
   // Keyboard navigation
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") goNext(); // RTL: left = forward
-      if (e.key === "ArrowRight") goPrev(); // RTL: right = backward
+      if (e.key === "ArrowLeft") goNext();
+      if (e.key === "ArrowRight") goPrev();
     };
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
   }, [goNext, goPrev]);
 
-  // Click on image sides for navigation
   const handleImageClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
     const halfWidth = rect.width / 2;
-    // RTL: right side = previous, left side = next
     if (clickX < halfWidth) {
       goNext();
     } else {
@@ -143,7 +157,6 @@ function LessonSlideshow({ steps }: { steps: LessonStep[] }) {
 
   return (
     <div className="max-w-5xl mx-auto">
-      {/* Progress bar */}
       <div className="flex items-center gap-3 mb-4">
         <span className="text-sm font-medium text-muted-foreground">
           {currentIndex + 1} / {total}
@@ -156,7 +169,6 @@ function LessonSlideshow({ steps }: { steps: LessonStep[] }) {
         </div>
       </div>
 
-      {/* Title bar */}
       <div className="flex items-center gap-3 mb-4">
         <span className="inline-flex items-center justify-center w-10 h-10 rounded-full text-sm font-bold bg-primary text-primary-foreground shrink-0">
           {step.id}
@@ -166,7 +178,6 @@ function LessonSlideshow({ steps }: { steps: LessonStep[] }) {
         </h3>
       </div>
 
-      {/* Slide area */}
       <div
         className="relative rounded-xl overflow-hidden bg-muted/30 border shadow-lg cursor-pointer select-none group"
         onClick={handleImageClick}
@@ -177,10 +188,8 @@ function LessonSlideshow({ steps }: { steps: LessonStep[] }) {
           className="w-full block"
           draggable={false}
         />
-
       </div>
 
-      {/* Navigation arrows outside the card */}
       <div className="flex justify-between mt-2 px-0">
         {currentIndex < total - 1 ? (
           <button onClick={goNext} className="p-2 rounded-full bg-muted hover:bg-muted/80 transition-colors">
@@ -194,12 +203,10 @@ function LessonSlideshow({ steps }: { steps: LessonStep[] }) {
         ) : <div />}
       </div>
 
-      {/* Description */}
       <p className="text-muted-foreground leading-relaxed mt-4 text-base">
         {step.content}
       </p>
 
-      {/* Bottom navigation buttons */}
       <div className="flex items-center justify-between mt-6">
         <Button
           variant="outline"
