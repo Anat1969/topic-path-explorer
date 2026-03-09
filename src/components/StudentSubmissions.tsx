@@ -24,9 +24,10 @@ interface Submission {
 interface Props {
   sessionId: string;
   topicId: string;
+  onNavigateToSlide?: (slideIndex: number) => void;
 }
 
-export function StudentSubmissions({ sessionId, topicId }: Props) {
+export function StudentSubmissions({ sessionId, topicId, onNavigateToSlide }: Props) {
   const { user } = useAuth();
   const navigate = useNavigate();
   const [submissions, setSubmissions] = useState<Submission[]>([]);
