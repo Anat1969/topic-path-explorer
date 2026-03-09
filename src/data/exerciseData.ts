@@ -21,9 +21,11 @@ export interface ExerciseExample {
   inputLabel: string;
   inputDescription: string;
   inputImage?: string;
+  inputSlideIndex?: number;
   outputLabel: string;
   outputDescription: string;
   outputImage?: string;
+  outputSlideIndex?: number;
 }
 
 export interface ExerciseInfo {
@@ -49,10 +51,12 @@ export const exercisesByTopic: Record<string, ExerciseInfo> = {
       inputDescription:
         'העלאת תמונת נוף הררי עם אגם שקט + הנחיות: "אני מעצב/ת פנים. צור שפה עיצובית בהשראת התמונה – כולל פלטת צבעים, חומרים, ואווירה."',
       inputImage: lesson1Input,
+      inputSlideIndex: 2,
       outputLabel: "פלט – שפה עיצובית מלאה",
       outputDescription:
         'קולקציית "Mirror Lake": פלטת צבעים טבעית (כחול עמוק, אפור סלע, כסף), חומרים (זכוכית טרנסלוסנטית, אבן, עץ), ופריטי עיצוב – נעל, תיק, ז\'קט, גופי תאורה וכלי הגשה.',
       outputImage: lesson1Output,
+      outputSlideIndex: 5,
     },
   },
   "a-2": {
@@ -71,10 +75,12 @@ export const exercisesByTopic: Record<string, ExerciseInfo> = {
       inputDescription:
         'העלאת תמונת נוף הררי עם סירה באגם + הנחיות: "פרק את התמונה ל-3 לוחות השראה: צבעים, חומרים, ופילוסופיית עיצוב. לאחר מכן הרכב שפה עיצובית ל-5 חללים בבית."',
       inputImage: lesson2Input,
+      inputSlideIndex: 4,
       outputLabel: "פלט – לוחות פירוק + עיצוב חללים",
       outputDescription:
         'לוח צבעים: "הרגש הטבעי" – כחול עמוק, אפור-כחלחל, חום סלע, כסף. לוח חומרים: אבן, עץ אורן, זכוכית, בטון, נחושת. הרכבה ל-5 חללים: סלון, מטבח, חדר שינה, מסדרון ומרפסת.',
       outputImage: lesson2Output,
+      outputSlideIndex: 9,
     },
   },
   "a-3": {
@@ -92,10 +98,12 @@ export const exercisesByTopic: Record<string, ExerciseInfo> = {
       inputDescription:
         'הנחיות: "אתה אדריכל, מומחה בתחומך. יש לך צוות יועצים. צור מחשבון חלוקת שטחים לדירה לפי שטח כולל – סלון, מטבח, חדרי שינה, עם אחוזים והסברים."',
       inputImage: lesson3Input,
+      inputSlideIndex: 2,
       outputLabel: "פלט – ממשק מחשבון אינטראקטיבי",
       outputDescription:
         "מחשבון חלוקת שטחים לדירה: המשתמש ממלא שטח דירה (100 מ\"ר), הממשק מציע חלוקה – סלון 25% (25 מ\"ר, 4.2×5.9), מטבח 8% (8 מ\"ר, 3.4×2.4), חדר הורים 15%, חדר שינה 12%.",
       outputImage: lesson3Output,
+      outputSlideIndex: 7,
     },
   },
   "b-1": {
@@ -114,10 +122,12 @@ export const exercisesByTopic: Record<string, ExerciseInfo> = {
       inputDescription:
         'אתגר: "איי חום עירוניים" (Urban Heat Islands) – חפשו פתרונות ביומימטיים לקירור אזורים עירוניים חמים מתוך פיתוח רעיון מעולמות החי, הצומח והדומם.',
       inputImage: lesson4Input,
+      inputSlideIndex: 4,
       outputLabel: "פלט – פתרון ביומימטי + 6 אילוסטרציות",
       outputDescription:
         'מערכת "TreeCool": השראה ממערת הוויינד (דומם), עץ הבאובב (צומח), והטרמיטים (חי). 6 אילוסטרציות: פרט (National Geographic), סקיצה (Zaha Hadid), תוכנית (Foster+Partners), חתך (Tadao Ando), חזית (BIG), מודל פיזי.',
       outputImage: lesson4Output,
+      outputSlideIndex: 9,
     },
   },
   "b-2": {
@@ -136,10 +146,12 @@ export const exercisesByTopic: Record<string, ExerciseInfo> = {
       inputDescription:
         'ייעוד: "משרד" – בקשו פרשנות מתמטית-פיזיקלית: איזה מושג מדעי מתאים לתכנון משרד אידיאלי? כיצד הוא מתורגם לעיצוב?',
       inputImage: lesson5Input,
+      inputSlideIndex: 4,
       outputLabel: "פלט – פרשנות לוגית + המחשה",
       outputDescription:
         'משרד = תורת הרשתות (Network Theory): 1. מבנה רשתי אופטימלי – כל עמדת עבודה כצומת, 2. דינמיק זרימה – מסלולי תנועה לפי הידרודינמיקה, 3. אקוסטיקה רשתית – אזורי שקט ותקשורת. המחשה בסגנונות Foster+Partners, Zaha Hadid.',
       outputImage: lesson5Output,
+      outputSlideIndex: 5,
     },
   },
   "b-3": {
@@ -158,10 +170,12 @@ export const exercisesByTopic: Record<string, ExerciseInfo> = {
       inputDescription:
         'שפה: נורבגית. בקשו: "צרו מפת תודעה קוגניטיבית של השפה הנורבגית ותרגמו אותה לעיצוב גינה/חצר ים-תיכונית."',
       inputImage: lesson6Input,
+      inputSlideIndex: 4,
       outputLabel: "פלט – קונספט תרבותי + עיצוב",
       outputDescription:
         'מפת תודעה: koselig (חמימות), friluftsliv (חיי אוויר חופשי), dugnad (עבודה קהילתית). תרגום: גינה עם צל טבעי, חומרים מקומיים, מרחבים משותפים, מינימליזם פונקציונלי. המחשות בסגנון Snøhetta ו-Nordic Architecture.',
       outputImage: lesson6Output,
+      outputSlideIndex: 14,
     },
   },
 };

@@ -24,9 +24,10 @@ interface Submission {
 interface Props {
   sessionId: string;
   topicId: string;
+  onNavigateToSlide?: (slideIndex: number) => void;
 }
 
-export function StudentSubmissions({ sessionId, topicId }: Props) {
+export function StudentSubmissions({ sessionId, topicId, onNavigateToSlide }: Props) {
   const { user } = useAuth();
   const navigate = useNavigate();
   const [submissions, setSubmissions] = useState<Submission[]>([]);
@@ -161,7 +162,7 @@ export function StudentSubmissions({ sessionId, topicId }: Props) {
 
         {exercise && (
           <div className="mb-8">
-            <ExerciseGuide exercise={exercise} />
+            <ExerciseGuide exercise={exercise} onNavigateToSlide={onNavigateToSlide} />
           </div>
         )}
 

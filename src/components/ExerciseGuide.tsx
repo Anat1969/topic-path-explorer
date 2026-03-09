@@ -1,12 +1,21 @@
 import { ExerciseInfo } from "@/data/exerciseData";
 import { Card, CardContent } from "@/components/ui/card";
-import { ListOrdered, ArrowDown, Lightbulb } from "lucide-react";
+import { ListOrdered, ArrowDown, Lightbulb, ExternalLink } from "lucide-react";
 
 interface Props {
   exercise: ExerciseInfo;
+  onNavigateToSlide?: (slideIndex: number) => void;
 }
 
-export function ExerciseGuide({ exercise }: Props) {
+export function ExerciseGuide({ exercise, onNavigateToSlide }: Props) {
+  const handleImageClick = (slideIndex?: number) => {
+    if (slideIndex !== undefined && onNavigateToSlide) {
+      onNavigateToSlide(slideIndex);
+      // Scroll to top where the slideshow is
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="space-y-6">
       {/* Exercise header */}
@@ -54,11 +63,24 @@ export function ExerciseGuide({ exercise }: Props) {
             {/* Input */}
             <div className="rounded-lg border border-primary/20 bg-background overflow-hidden">
               {exercise.example.inputImage && (
-                <img
-                  src={exercise.example.inputImage}
-                  alt={exercise.example.inputLabel}
-                  className="w-full h-40 object-cover"
-                />
+                <div
+                  className={`relative group ${exercise.example.inputSlideIndex !== undefined && onNavigateToSlide ? 'cursor-pointer' : ''}`}
+                  onClick={() => handleImageClick(exercise.example.inputSlideIndex)}
+                >
+                  <img
+                    src={exercise.example.inputImage}
+                    alt={exercise.example.inputLabel}
+                    className="w-full h-40 object-cover transition-opacity group-hover:opacity-80"
+                  />
+                  {exercise.example.inputSlideIndex !== undefined && onNavigateToSlide && (
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-primary/20">
+                      <span className="flex items-center gap-1.5 bg-primary text-primary-foreground text-xs font-medium px-3 py-1.5 rounded-full shadow">
+                        <ExternalLink className="h-3.5 w-3.5" />
+                        צפה במצגת
+                      </span>
+                    </div>
+                  )}
+                </div>
               )}
               <div className="p-4 space-y-2">
                 <div className="flex items-center gap-2">
@@ -79,11 +101,24 @@ export function ExerciseGuide({ exercise }: Props) {
             {/* Output */}
             <div className="rounded-lg border border-primary/20 bg-background overflow-hidden">
               {exercise.example.outputImage && (
-                <img
-                  src={exercise.example.outputImage}
-                  alt={exercise.example.outputLabel}
-                  className="w-full h-40 object-cover"
-                />
+                <div
+                  className={`relative group ${exercise.example.outputSlideIndex !== undefined && onNavigateToSlide ? 'cursor-pointer' : ''}`}
+                  onClick={() => handleImageClick(exercise.example.outputSlideIndex)}
+                >
+                  <img
+                    src={exercise.example.outputImage}
+                    alt={exercise.example.outputLabel}
+                    className="w-full h-40 object-cover transition-opacity group-hover:opacity-80"
+                  />
+                  {exercise.example.outputSlideIndex !== undefined && onNavigateToSlide && (
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-primary/20">
+                      <span className="flex items-center gap-1.5 bg-primary text-primary-foreground text-xs font-medium px-3 py-1.5 rounded-full shadow">
+                        <ExternalLink className="h-3.5 w-3.5" />
+                        צפה במצגת
+                      </span>
+                    </div>
+                  )}
+                </div>
               )}
               <div className="p-4 space-y-2">
                 <div className="flex items-center gap-2">
