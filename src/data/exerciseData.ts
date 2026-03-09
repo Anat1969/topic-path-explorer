@@ -170,10 +170,12 @@ export const exercisesByTopic: Record<string, ExerciseInfo> = {
       inputDescription:
         'שפה: נורבגית. בקשו: "צרו מפת תודעה קוגניטיבית של השפה הנורבגית ותרגמו אותה לעיצוב גינה/חצר ים-תיכונית."',
       inputImage: lesson6Input,
+      inputSlideIndex: 4,
       outputLabel: "פלט – קונספט תרבותי + עיצוב",
       outputDescription:
         'מפת תודעה: koselig (חמימות), friluftsliv (חיי אוויר חופשי), dugnad (עבודה קהילתית). תרגום: גינה עם צל טבעי, חומרים מקומיים, מרחבים משותפים, מינימליזם פונקציונלי. המחשות בסגנון Snøhetta ו-Nordic Architecture.',
       outputImage: lesson6Output,
+      outputSlideIndex: 14,
     },
   },
 };
