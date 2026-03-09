@@ -51,10 +51,12 @@ export const exercisesByTopic: Record<string, ExerciseInfo> = {
       inputDescription:
         'העלאת תמונת נוף הררי עם אגם שקט + הנחיות: "אני מעצב/ת פנים. צור שפה עיצובית בהשראת התמונה – כולל פלטת צבעים, חומרים, ואווירה."',
       inputImage: lesson1Input,
+      inputSlideIndex: 2,
       outputLabel: "פלט – שפה עיצובית מלאה",
       outputDescription:
         'קולקציית "Mirror Lake": פלטת צבעים טבעית (כחול עמוק, אפור סלע, כסף), חומרים (זכוכית טרנסלוסנטית, אבן, עץ), ופריטי עיצוב – נעל, תיק, ז\'קט, גופי תאורה וכלי הגשה.',
       outputImage: lesson1Output,
+      outputSlideIndex: 5,
     },
   },
   "a-2": {
