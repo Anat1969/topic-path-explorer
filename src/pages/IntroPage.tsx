@@ -299,11 +299,11 @@ function CopyableTemplate({ title, icon, template }: { title: string; icon: stri
 function TemplatesSection() {
   return (
     <div className="max-w-5xl mx-auto mb-16">
-      <h2 className="text-2xl font-bold text-foreground mb-2 flex items-center gap-3">
-        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground text-lg font-bold">📋</span>
+      <h2 className="text-3xl font-bold text-foreground mb-3 flex items-center gap-3">
+        <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground text-xl font-bold">📋</span>
         תרגיל הקדמה – בניית הגדרות אישיות
       </h2>
-      <p className="text-muted-foreground mb-6">
+      <p className="text-muted-foreground mb-6 text-lg">
         העתיקו כל תבנית, מלאו את השדות, והדביקו בממשק ה-AI שלכם. זו נקודת ההתחלה לעבודה מקצועית עם בינה מלאכותית.
       </p>
       <div className="space-y-6">
