@@ -1,8 +1,16 @@
+import lesson1Thumb from "@/assets/lesson/page_6.jpg";
+import lesson2Thumb from "@/assets/lesson2/page_6.jpg";
+import lesson3Thumb from "@/assets/lesson3/page_6.jpg";
+import lesson4Thumb from "@/assets/lesson4/page_7.jpg";
+import lesson5Thumb from "@/assets/lesson5/page_5.jpg";
+import lesson6Thumb from "@/assets/lesson6/page_5.jpg";
+
 export interface Topic {
   id: number;
   title: string;
   subtitle: string;
   description: string;
+  thumbnail: string;
 }
 
 export interface Session {
