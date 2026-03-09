@@ -75,10 +75,12 @@ export const exercisesByTopic: Record<string, ExerciseInfo> = {
       inputDescription:
         'העלאת תמונת נוף הררי עם סירה באגם + הנחיות: "פרק את התמונה ל-3 לוחות השראה: צבעים, חומרים, ופילוסופיית עיצוב. לאחר מכן הרכב שפה עיצובית ל-5 חללים בבית."',
       inputImage: lesson2Input,
+      inputSlideIndex: 4,
       outputLabel: "פלט – לוחות פירוק + עיצוב חללים",
       outputDescription:
         'לוח צבעים: "הרגש הטבעי" – כחול עמוק, אפור-כחלחל, חום סלע, כסף. לוח חומרים: אבן, עץ אורן, זכוכית, בטון, נחושת. הרכבה ל-5 חללים: סלון, מטבח, חדר שינה, מסדרון ומרפסת.',
       outputImage: lesson2Output,
+      outputSlideIndex: 9,
     },
   },
   "a-3": {
