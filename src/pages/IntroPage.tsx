@@ -266,9 +266,9 @@ function CopyableTemplate({ title, icon, template }: { title: string; icon: stri
   };
 
   return (
-    <Card className="border-2 hover:border-primary/50 transition-colors">
+    <Card className="border-2 hover:border-primary/50 transition-colors bg-muted/30">
       <CardHeader className="pb-3">
-        <CardTitle className="text-lg flex items-center justify-between">
+        <CardTitle className="text-xl flex items-center justify-between">
           <span className="flex items-center gap-2">
             <span className="text-2xl">{icon}</span>
             {title}
