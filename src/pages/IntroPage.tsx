@@ -287,7 +287,7 @@ function CopyableTemplate({ title, icon, template }: { title: string; icon: stri
       <CardContent>
         <pre
           dir="rtl"
-          className="whitespace-pre-wrap text-sm leading-relaxed bg-muted/50 rounded-lg p-4 text-foreground font-mono overflow-x-auto"
+          className="whitespace-pre-wrap text-base leading-relaxed bg-muted/60 rounded-lg p-5 text-foreground font-mono overflow-x-auto"
         >
           {template}
         </pre>
