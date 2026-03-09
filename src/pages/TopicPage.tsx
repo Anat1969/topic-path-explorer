@@ -77,24 +77,28 @@ const TopicPage = () => {
 
       <main className="container mx-auto px-4 py-6">
         {currentLessonSteps ? (
-          <LessonSlideshow steps={currentLessonSteps} />
+          <LessonSlideshowWithSubmissions
+            steps={currentLessonSteps}
+            sessionId={sessionId!}
+            topicId={topicId!}
+          />
         ) : (
-          <Card className="max-w-md mx-auto text-center">
-            <CardContent className="py-12 space-y-4">
-              <Construction className="h-16 w-16 text-muted-foreground mx-auto" />
-              <h2 className="text-2xl font-semibold text-foreground">בקרוב...</h2>
-              <p className="text-muted-foreground">
-                התוכן של נושא זה יהיה זמין בקרוב. הישארו מעודכנים!
-              </p>
-            </CardContent>
-          </Card>
-        )}
-
-        {/* Student submissions section */}
-        {sessionId && topicId && (
-          <div className="max-w-5xl mx-auto">
-            <StudentSubmissions sessionId={sessionId} topicId={topicId} />
-          </div>
+          <>
+            <Card className="max-w-md mx-auto text-center">
+              <CardContent className="py-12 space-y-4">
+                <Construction className="h-16 w-16 text-muted-foreground mx-auto" />
+                <h2 className="text-2xl font-semibold text-foreground">בקרוב...</h2>
+                <p className="text-muted-foreground">
+                  התוכן של נושא זה יהיה זמין בקרוב. הישארו מעודכנים!
+                </p>
+              </CardContent>
+            </Card>
+            {sessionId && topicId && (
+              <div className="max-w-5xl mx-auto">
+                <StudentSubmissions sessionId={sessionId} topicId={topicId} />
+              </div>
+            )}
+          </>
         )}
       </main>
     </div>
