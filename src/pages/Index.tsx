@@ -3,6 +3,7 @@ import { sessions } from "@/data/courseData";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, BookOpen, Sparkles, Cpu, Play } from "lucide-react";
+import heroBg from "@/assets/hero-bg.png";
 
 const sessionIcons = [Cpu, Sparkles];
 
