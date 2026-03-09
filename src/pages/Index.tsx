@@ -36,8 +36,11 @@ const Index = () => {
       </header>
 
       {/* Sessions Grid */}
-      <main className="container mx-auto px-4 py-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <main className="relative container mx-auto px-4 py-10">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <img src={heroBg} alt="" className="w-full h-full object-cover opacity-10 rounded-xl" />
+        </div>
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
           {sessions.map((session, sessionIndex) => {
             const Icon = sessionIcons[sessionIndex];
             const isFirst = sessionIndex === 0;
