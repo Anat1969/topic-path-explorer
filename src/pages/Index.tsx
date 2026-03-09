@@ -83,12 +83,21 @@ const Index = () => {
                   {session.topics.map((topic) => (
                     <Card
                       key={topic.id}
-                      className="group cursor-pointer transition-all duration-200 hover:shadow-md hover:border-primary/40 border"
+                      className="group cursor-pointer transition-all duration-200 hover:shadow-md hover:border-primary/40 border overflow-hidden relative"
                       onClick={() =>
                         navigate(`/session/${session.id}/topic/${topic.id}`)
                       }
                     >
-                      <CardContent className="p-4">
+                      {/* Background thumbnail */}
+                      <div className="absolute inset-0">
+                        <img
+                          src={topic.thumbnail}
+                          alt=""
+                          className="w-full h-full object-cover opacity-15 group-hover:opacity-25 transition-opacity duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-l from-background via-background/80 to-transparent" />
+                      </div>
+                      <CardContent className="p-4 relative z-10">
                         <div className="flex items-start justify-between gap-4">
                           <div className="flex-1">
                             <div className="flex items-center gap-2 mb-1">
