@@ -159,10 +159,10 @@ function IntroSlideshow({ steps }: { steps: LessonStep[] }) {
       </div>
 
       <div className="flex items-center gap-3 mb-4">
-        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full text-sm font-bold bg-primary text-primary-foreground shrink-0">
+        <span className="inline-flex items-center justify-center w-12 h-12 rounded-full text-lg font-bold bg-primary text-primary-foreground shrink-0">
           {step.id}
         </span>
-        <h3 className="font-bold text-foreground text-xl flex-1">
+        <h3 className="font-bold text-foreground text-2xl md:text-3xl flex-1">
           {step.title}
         </h3>
       </div>
