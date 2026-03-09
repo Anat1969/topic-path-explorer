@@ -102,7 +102,7 @@ const IntroPage = () => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-6">
+      <main className="container mx-auto px-4 py-8 bg-muted/20">
         <IntroSlideshow steps={introSteps} />
         <SummarySection />
         <TemplatesSection />
@@ -147,7 +147,7 @@ function IntroSlideshow({ steps }: { steps: LessonStep[] }) {
   return (
     <div className="max-w-5xl mx-auto">
       <div className="flex items-center gap-3 mb-4">
-        <span className="text-sm font-medium text-muted-foreground">
+        <span className="text-base font-medium text-muted-foreground">
           {currentIndex + 1} / {total}
         </span>
         <div className="flex-1 h-1.5 bg-muted rounded-full overflow-hidden">
@@ -159,10 +159,10 @@ function IntroSlideshow({ steps }: { steps: LessonStep[] }) {
       </div>
 
       <div className="flex items-center gap-3 mb-4">
-        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full text-sm font-bold bg-primary text-primary-foreground shrink-0">
+        <span className="inline-flex items-center justify-center w-12 h-12 rounded-full text-lg font-bold bg-primary text-primary-foreground shrink-0">
           {step.id}
         </span>
-        <h3 className="font-bold text-foreground text-xl flex-1">
+        <h3 className="font-bold text-foreground text-2xl md:text-3xl flex-1">
           {step.title}
         </h3>
       </div>
@@ -192,7 +192,7 @@ function IntroSlideshow({ steps }: { steps: LessonStep[] }) {
         ) : <div />}
       </div>
 
-      <p className="text-muted-foreground leading-relaxed mt-4 text-base">
+      <p className="text-muted-foreground leading-relaxed mt-5 text-lg md:text-xl">
         {step.content}
       </p>
 
@@ -223,12 +223,12 @@ function SummarySection() {
   return (
     <div className="max-w-5xl mx-auto mt-16 mb-12">
       <div className="border-t pt-10">
-        <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-          <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground text-lg font-bold">✦</span>
+        <h2 className="text-3xl font-bold text-foreground mb-6 flex items-center gap-3">
+          <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground text-xl font-bold">✦</span>
           סיכום ההקדמה
         </h2>
-        <Card className="bg-muted/30">
-          <CardContent className="p-6 space-y-4 text-foreground leading-relaxed">
+        <Card className="bg-muted/50 border-muted">
+          <CardContent className="p-8 space-y-5 text-foreground leading-relaxed text-lg">
             <p>
               <strong>עוגת הידע:</strong> שלושה אזורים – מה שאנחנו יודעים (אדום), מה שאנחנו מכירים אבל לא יודעים (כתום), ומה שלא מכירים ולא יודעים (צהוב). המטרה – להרחיב את הצהוב ולהפוך אותו לאדום.
             </p>
@@ -266,9 +266,9 @@ function CopyableTemplate({ title, icon, template }: { title: string; icon: stri
   };
 
   return (
-    <Card className="border-2 hover:border-primary/50 transition-colors">
+    <Card className="border-2 hover:border-primary/50 transition-colors bg-muted/30">
       <CardHeader className="pb-3">
-        <CardTitle className="text-lg flex items-center justify-between">
+        <CardTitle className="text-xl flex items-center justify-between">
           <span className="flex items-center gap-2">
             <span className="text-2xl">{icon}</span>
             {title}
@@ -287,7 +287,7 @@ function CopyableTemplate({ title, icon, template }: { title: string; icon: stri
       <CardContent>
         <pre
           dir="rtl"
-          className="whitespace-pre-wrap text-sm leading-relaxed bg-muted/50 rounded-lg p-4 text-foreground font-mono overflow-x-auto"
+          className="whitespace-pre-wrap text-base leading-relaxed bg-muted/60 rounded-lg p-5 text-foreground font-mono overflow-x-auto"
         >
           {template}
         </pre>
@@ -299,11 +299,11 @@ function CopyableTemplate({ title, icon, template }: { title: string; icon: stri
 function TemplatesSection() {
   return (
     <div className="max-w-5xl mx-auto mb-16">
-      <h2 className="text-2xl font-bold text-foreground mb-2 flex items-center gap-3">
-        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground text-lg font-bold">📋</span>
+      <h2 className="text-3xl font-bold text-foreground mb-3 flex items-center gap-3">
+        <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground text-xl font-bold">📋</span>
         תרגיל הקדמה – בניית הגדרות אישיות
       </h2>
-      <p className="text-muted-foreground mb-6">
+      <p className="text-muted-foreground mb-6 text-lg">
         העתיקו כל תבנית, מלאו את השדות, והדביקו בממשק ה-AI שלכם. זו נקודת ההתחלה לעבודה מקצועית עם בינה מלאכותית.
       </p>
       <div className="space-y-6">
