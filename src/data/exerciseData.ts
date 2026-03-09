@@ -21,9 +21,11 @@ export interface ExerciseExample {
   inputLabel: string;
   inputDescription: string;
   inputImage?: string;
+  inputSlideIndex?: number;
   outputLabel: string;
   outputDescription: string;
   outputImage?: string;
+  outputSlideIndex?: number;
 }
 
 export interface ExerciseInfo {
