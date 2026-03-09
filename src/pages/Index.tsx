@@ -13,10 +13,8 @@ const Index = () => {
   return (
     <div dir="rtl" className="min-h-screen bg-background">
       {/* Header */}
-      <header className="relative py-10 px-4 overflow-hidden">
-        <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-primary/70" />
-        <div className="container mx-auto text-center relative z-10">
+      <header className="bg-primary py-10 px-4">
+        <div className="container mx-auto text-center">
           <div className="flex items-center justify-center gap-3 mb-3">
             <BookOpen className="h-8 w-8 text-primary-foreground/80" />
             <h1 className="text-3xl md:text-4xl font-bold text-primary-foreground">
@@ -38,8 +36,11 @@ const Index = () => {
       </header>
 
       {/* Sessions Grid */}
-      <main className="container mx-auto px-4 py-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <main className="relative container mx-auto px-4 py-10">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <img src={heroBg} alt="" className="w-full h-full object-cover opacity-10 rounded-xl" />
+        </div>
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
           {sessions.map((session, sessionIndex) => {
             const Icon = sessionIcons[sessionIndex];
             const isFirst = sessionIndex === 0;
