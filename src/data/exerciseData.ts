@@ -122,10 +122,12 @@ export const exercisesByTopic: Record<string, ExerciseInfo> = {
       inputDescription:
         'אתגר: "איי חום עירוניים" (Urban Heat Islands) – חפשו פתרונות ביומימטיים לקירור אזורים עירוניים חמים מתוך פיתוח רעיון מעולמות החי, הצומח והדומם.',
       inputImage: lesson4Input,
+      inputSlideIndex: 4,
       outputLabel: "פלט – פתרון ביומימטי + 6 אילוסטרציות",
       outputDescription:
         'מערכת "TreeCool": השראה ממערת הוויינד (דומם), עץ הבאובב (צומח), והטרמיטים (חי). 6 אילוסטרציות: פרט (National Geographic), סקיצה (Zaha Hadid), תוכנית (Foster+Partners), חתך (Tadao Ando), חזית (BIG), מודל פיזי.',
       outputImage: lesson4Output,
+      outputSlideIndex: 9,
     },
   },
   "b-2": {
