@@ -192,7 +192,7 @@ function IntroSlideshow({ steps }: { steps: LessonStep[] }) {
         ) : <div />}
       </div>
 
-      <p className="text-muted-foreground leading-relaxed mt-4 text-base">
+      <p className="text-muted-foreground leading-relaxed mt-5 text-lg md:text-xl">
         {step.content}
       </p>
 
