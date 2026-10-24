@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, BookOpen, Sparkles, Cpu, Play } from "lucide-react";
 import heroBg from "@/assets/hero-bg.png";
+import AIMenu from "@/components/AIMenu";
 
 const sessionIcons = [Cpu, Sparkles];
 
@@ -15,6 +16,9 @@ const Index = () => {
       {/* Header */}
       <header className="bg-primary py-10 px-4">
         <div className="container mx-auto text-center">
+          <div className="flex justify-end">
+            <AIMenu />
+          </div>
           <div className="flex items-center justify-center gap-3 mb-3">
             <BookOpen className="h-8 w-8 text-primary-foreground/80" />
             <h1 className="text-3xl md:text-4xl font-bold text-primary-foreground">

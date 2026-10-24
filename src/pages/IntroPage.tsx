@@ -6,6 +6,7 @@ import { useState, useCallback, useEffect } from "react";
 import type { LessonStep } from "@/data/lessonData";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import AIMenu from "@/components/AIMenu";
 
 const settingTemplate = `# Setting – העדפות משתמש
 
@@ -99,6 +100,7 @@ const IntroPage = () => {
               </h1>
             </div>
           </div>
+          <AIMenu />
         </div>
       </header>
 
