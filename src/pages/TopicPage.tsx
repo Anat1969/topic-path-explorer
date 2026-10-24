@@ -13,6 +13,7 @@ import { useState, useCallback, useEffect } from "react";
 import type { LessonStep } from "@/data/lessonData";
 import { StudentSubmissions } from "@/components/StudentSubmissions";
 import { useAuth } from "@/contexts/AuthContext";
+import AIMenu from "@/components/AIMenu";
 
 const TopicPage = () => {
   const { sessionId, topicId } = useParams();
@@ -61,7 +62,7 @@ const TopicPage = () => {
               {topic.id}. {topic.title} – {topic.subtitle}
             </h1>
           </div>
-          <div className="pt-1">
+          <div className="pt-1 flex items-center gap-2">
             {user ? (
               <Button variant="ghost" onClick={signOut} className="text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10 text-sm">
                 התנתק
@@ -71,6 +72,7 @@ const TopicPage = () => {
                 התחברות
               </Button>
             )}
+            <AIMenu />
           </div>
         </div>
       </header>

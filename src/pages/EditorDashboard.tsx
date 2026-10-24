@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Trash2, ArrowRight, Users } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { sessions } from "@/data/courseData";
+import AIMenu from "@/components/AIMenu";
 
 interface Submission {
   id: string;
@@ -92,6 +93,7 @@ const EditorDashboard = () => {
               תרגילי סטודנטים - תצוגת עורך
             </h1>
           </div>
+          <AIMenu />
         </div>
       </header>
 
